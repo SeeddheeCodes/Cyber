@@ -1,1 +1,25 @@
- Seeddhee
+# Phishing_Detection
+
+Data Cleaning: Unnecessary columns are removed, and the remaining columns are renamed for clarity (v1 to TARGET and v2 to MESSAGE).
+
+Handling Duplicates: Duplicate rows are removed to avoid redundancy.
+
+Text Vectorization: CountVectorizer is used to convert the text messages (MESSAGE) into a matrix of token counts. This is the feature extraction step where the text data is transformed into a numerical format that the machine learning model can process.
+
+The LogisticRegression model is trained using the transformed training data (x_train_cv), which contains numerical features derived from the MESSAGE column, and the corresponding labels (y_train).
+
+The trained model is evaluated on the transformed test data (x_test_cv) to predict labels, and these predictions are compared against the actual test labels (y_test).
+
+
+Logistic Regression Algorithm
+Concept:
+
+Logistic Regression is a linear model used for binary classification tasks. It predicts the probability of a given input belonging to a particular class.
+It is called "logistic" because it uses the logistic function (sigmoid function) to model the probability.
+How It Works:
+
+Feature Extraction: Text data from the MESSAGE column is converted into numerical features using CountVectorizer. This results in a matrix of token counts (bag-of-words representation).
+Training the Model: The Logistic Regression model is trained using these features (from x_train_cv) and the corresponding labels (from y_train).
+The model learns the relationship between the features and the labels by finding the best-fitting line (or hyperplane in higher dimensions) that separates the classes.
+Prediction: Once trained, the model can predict the class of new messages by computing the probability that a message belongs to each class (ham or spam). It uses the logistic function to transform the linear combination of input features into a probability value between 0 and 1.
+If the probability is greater than 0.5, the message is classified as spam (1); otherwise, it is classified as ham (0).
